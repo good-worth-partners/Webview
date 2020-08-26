@@ -27,7 +27,10 @@ public class Main extends Application {
         WebView webView = new WebView();
         
         primaryStage.setTitle(" WebView ");
+        webView.getEngine().setOnError(event -> System.err.println(event.getMessage()));
+	webView.getEngine().setOnAlert(event -> System.err.println(event.getData()));
 
+        webView.getEngine().setJavaScriptEnabled(true);
         webView.getEngine().load("http://46.165.243.164:9876/gwplpos/menucard?pt=4_EXT6");    
         // action event 
         VBox vBox = new VBox(webView);
